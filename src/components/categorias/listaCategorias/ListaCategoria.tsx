@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { DNA } from 'react-loader-spinner';
-import { buscar } from '../../services/Service';
-import CardCategorias from '../cardCategorias/CardCategoria';
-import Categoria from '../../models/Categoria';
+import { buscar } from '../../../services/Service';
+import CardCategorias from '../cardCategorias/CardCategorias';
+import Categoria from '../../../models/Categoria';
 
 function ListaCategorias() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -11,14 +11,13 @@ function ListaCategorias() {
     try {
       await buscar('/categorias', setCategorias, {});
     } catch (error: any) {
-      // Trate os erros aqui, se necessário
       console.error('Erro ao buscar categorias:', error);
     }
   }
 
   useEffect(() => {
     buscarCategoria();
-  }, []); // Chame buscarCategoria() uma vez quando o componente for montado
+  }, []); 
 
   return (
     <>

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import Categoria from "../../models/Categoria";
-import { buscar, deletar } from '../../services/Service'
+import Categoria from "../../../models/Categoria";
+import { buscar, deletar } from '../../../services/Service'
 
 
 function DeletarCategoria() {
-    const [tema, setCategoria] = useState<Categoria>({} as Categoria)
+    const [Categorias, setCategoria] = useState<Categoria>({} as Categoria)
 
     let navigate = useNavigate()
 
@@ -31,7 +31,7 @@ function DeletarCategoria() {
         navigate("/Categoria")
     }
 
-    async function deletarTema() {
+    async function DeletarCategoria() {
         try {
             await deletar(`/Categoria/${id}`, {
                
@@ -53,10 +53,10 @@ function DeletarCategoria() {
 
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>Categoria</header>
-                <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
+                <p className='p-8 text-3xl bg-slate-200 h-full'>{Categorias.descricao}</p>
                 <div className="flex">
                     <button className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>Não</button>
-                    <button className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-600 flex items-center justify-center' onClick={deletarTema}>
+                    <button className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-600 flex items-center justify-center' onClick={DeletarCategoria}>
                         Sim
                     </button>
                 </div>
@@ -73,4 +73,3 @@ function toastAlerta(arg0: string, arg1: string) {
 function handleLogout() {
     throw new Error('Function not implemented.');
 }
-
